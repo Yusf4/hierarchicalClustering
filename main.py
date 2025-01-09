@@ -1,16 +1,27 @@
-# This is a sample Python script.
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.cluster.hierarchy import fcluster
 
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
-
+points=np.array([
+    [1,2],
+    [2,3],
+    [3,4],
+    [5,6],
+    [8,8],
+    [8,9],
+    [25,30]
+])
+linked=linkage(points,method='ward')
+plt.figure(figsize=(8,5))
+dendrogram(linked,labels=list(range(1,len(points)+1)))
+plt.title("Dendrogram for Hierarchical Clustering")
+plt.xlabel("Data points")
+plt.ylabel("Distance")
+plt.show()
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    print('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
