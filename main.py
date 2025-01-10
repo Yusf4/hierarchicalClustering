@@ -20,6 +20,19 @@ plt.xlabel("Data points")
 plt.ylabel("Distance")
 plt.show()
 
+clusters=fcluster(linked,t=10,criterion='distance')
+print("Cluster assignments:",clusters)
+
+plt.figure(figsize=(8,5))
+for i,cluster in enumerate(clusters):
+    plt.scatter(points[i,0],points[i,1],label=f"Cluster {cluster}")
+for i,txt in enumerate(range(1,len(points)+1)):
+    plt.annotate(txt,(points[i,0]+0.2,points[i,1]+0.2))
+plt.title("Clusters")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.grid(True)
+plt.show()
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('PyCharm')
